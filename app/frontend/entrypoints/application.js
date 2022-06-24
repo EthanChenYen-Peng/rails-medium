@@ -1,5 +1,5 @@
 import axios from 'axios'
-
+import "./index.css"
 // import Layout from '../pages/_layout.svelte'
 
 import { createInertiaApp } from '@inertiajs/inertia-svelte'
