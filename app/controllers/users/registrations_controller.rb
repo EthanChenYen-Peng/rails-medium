@@ -11,9 +11,13 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   # POST /resource
-  # def create
-  #   super
-  # end
+  def create
+    super do |resource|
+      unless resource.persisted?
+        return redirect_to new_user_registration_path, inertia: { errors: resource.errors }
+      end
+    end
+  end
 
   # GET /resource/edit
   # def edit

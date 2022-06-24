@@ -1,4 +1,5 @@
 <script>
+  import { Link } from "@inertiajs/inertia-svelte";
   let y;
 
   $: changeColor = y > 300;
@@ -17,7 +18,7 @@
         ? 'bg-green-600'
         : 'bg-black'}"
     >
-      Get Started
+      <Link href="/users/sign_up">Get Started</Link>
     </li>
   </ul>
 </nav>

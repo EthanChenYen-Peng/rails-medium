@@ -1,32 +1,50 @@
+<script>
+  import { useForm } from "@inertiajs/inertia-svelte";
+
+  let form = useForm({
+    email: null,
+    password: null,
+  });
+
+  function submit() {
+    $form
+      .transform((data) => ({
+        user: { ...data },
+      }))
+      .post("/users");
+  }
+</script>
+
 <div class="container flex h-full flex-col items-center justify-center">
-  <h1 class="mb-[100px] font-serif text-3xl">Join Medium</h1>
+  <h1 class="mb-[100px] font-serif text-4xl">Join Medium</h1>
   <form
-    class="flex w-11/12 max-w-[400px] flex-col gap-3 rounded-sm bg-gray-200 px-7 py-6 font-serif "
+    on:submit|preventDefault={submit}
+    class="flex w-11/12 max-w-[400px] flex-col gap-3 rounded-sm bg-gray-100 px-7 py-6 font-serif "
   >
-    <input
-      type="text"
-      value=""
-      name="username"
-      id=""
-      class="w-full px-2 py-1"
-      placeholder="Username"
-    />
+    <!-- <input type="text" bind:value={username} name="username" id="" class="w-full px-2 py-1" placeholder="Username"/> -->
+
     <input
       type="email"
-      value=""
+      bind:value={$form.email}
       name="email"
       id=""
       class="w-full px-2 py-1"
-      placeholder="eamil"
+      placeholder="Eamil"
     />
+    {#if $form.errors.email}
+      <div class="text-red-400">{$form.errors.email}</div>
+    {/if}
     <input
       type="password"
-      value=""
+      bind:value={$form.password}
       name="email"
       id=""
       class="w-full px-2 py-1"
-      placeholder="password"
+      placeholder="Password"
     />
+    {#if $form.errors.password}
+      <div class="text-red-400">{$form.errors.password}</div>
+    {/if}
     <button
       class="bg-green-200 px-2 py-2 text-black transition-colors hover:bg-green-700 hover:text-white"
       >Sign Up</button
