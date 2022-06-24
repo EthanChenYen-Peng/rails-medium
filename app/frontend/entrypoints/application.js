@@ -1,28 +1,24 @@
-// To see this message, add the following to the `<head>` section in your
-// views/layouts/application.html.erb
-//
-//    <%= vite_client_tag %>
-//    <%= vite_javascript_tag 'application' %>
-console.log('Vite ⚡️ Rails')
+import axios from 'axios'
 
-// If using a TypeScript entrypoint file:
-//     <%= vite_typescript_tag 'application' %>
-//
-// If you want to use .jsx or .tsx, add the extension:
-//     <%= vite_javascript_tag 'application.jsx' %>
+// import Layout from '../pages/_layout.svelte'
 
-console.log('Visit the guide for more information: ', 'https://vite-ruby.netlify.app/guide/rails')
+import { createInertiaApp } from '@inertiajs/inertia-svelte'
+// import { InertiaProgress } from '@inertiajs/progress'
 
-// Example: Load Rails libraries in Vite.
-//
-// import * as Turbo from '@hotwired/turbo'
-// Turbo.start()
-//
-// import ActiveStorage from '@rails/activestorage'
-// ActiveStorage.start()
-//
-// // Import all channels.
-// const channels = import.meta.globEager('./**/*_channel.js')
+const pages = import.meta.glob('../Pages/**/*.svelte')
 
-// Example: Import a stylesheet in app/frontend/index.css
-// import '~/index.css'
+const csrfToken = document.querySelector('meta[name=csrf-token]').content
+axios.defaults.headers.common['X-CSRF-Token'] = csrfToken
+
+// InertiaProgress.init()
+
+createInertiaApp({
+  resolve: async name => {
+    const page = await pages[`../Pages/${name}.svelte`]()
+    // return Object.assign({layout: Layout}, page)
+    return page
+  },
+  setup({ el, App, props }) {
+    new App({ target: el, props })
+  },
+})
