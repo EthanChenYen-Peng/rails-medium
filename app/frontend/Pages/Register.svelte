@@ -4,6 +4,7 @@
   let form = useForm({
     email: null,
     password: null,
+    username: null,
   });
 
   function submit() {
@@ -21,8 +22,17 @@
     on:submit|preventDefault={submit}
     class="flex w-11/12 max-w-[400px] flex-col gap-3 rounded-sm bg-gray-100 px-7 py-6 font-serif "
   >
-    <!-- <input type="text" bind:value={username} name="username" id="" class="w-full px-2 py-1" placeholder="Username"/> -->
-
+    <input
+      type="username"
+      bind:value={$form.username}
+      name="username"
+      id=""
+      class="w-full px-2 py-1"
+      placeholder="Username"
+    />
+    {#if $form.errors.username}
+      <div class="text-red-400">{$form.errors.username}</div>
+    {/if}
     <input
       type="email"
       bind:value={$form.email}
