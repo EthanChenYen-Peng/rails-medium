@@ -1,6 +1,5 @@
 <script>
-  import { useForm } from "@inertiajs/inertia-svelte";
-
+  import { useForm, page } from "@inertiajs/inertia-svelte";
   let form = useForm({
     email: null,
     password: null,
@@ -45,7 +44,11 @@
     {/if}
     <button
       class="px-2 py-2 text-black bg-green-200 transition-colors hover:bg-green-700 hover:text-white"
-      >Sign In</button
+    >Sign In</button
     >
   </form>
+
+  {#if $page.props.flash.alert}
+    <div class="text-red-500 ">{$page.props.flash.alert}</div>
+  {/if}
 </div>
