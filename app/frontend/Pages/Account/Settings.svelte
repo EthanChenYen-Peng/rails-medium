@@ -4,24 +4,29 @@
 </script>
 
 <script>
-  export let user;
+  import { useForm } from "@inertiajs/inertia-svelte";
 
-  let username = user.username;
+  export let user;
 
   let editingName = false;
   let nameInputRef;
 
-  function enableNameInput() {
-    nameInputRef.removeAttribute("disabled");
-    nameInputRef.focus();
-  }
+  let form = useForm({
+    username: user.username,
+  });
 
   $: {
     if (editingName) {
-      enableNameInput();
+      nameInputRef.removeAttribute("disabled");
+      nameInputRef.focus();
     } else {
       nameInputRef?.setAttribute("disabled", "true");
     }
+  }
+
+  function handleSubmit() {
+    $form.transform((data) => ({ user: { ...data } })).put("/me/settings");
+    editingName = false;
   }
 </script>
 
@@ -36,10 +41,14 @@
         <input
           bind:this={nameInputRef}
           type="text"
-          bind:value={username}
+          bind:value={$form.username}
           class="w-full border-b border-b-gray-300 px-2 py-1 text-xl focus:outline-none"
           disabled
         />
+
+        {#if $form.errors.username}
+          <div class="text-red-400">{$form.errors.username}</div>
+        {/if}
       </form>
       <p>
         Your name appears on your Profile page, as your byline, and in your
@@ -51,7 +60,7 @@
     >
       {#if editingName}
         <button
-          on:click={() => (editingName = true)}
+          on:click={handleSubmit}
           class="rounded-full border border-green-600 px-4 py-2 text-green-600"
           >Save</button
         >
