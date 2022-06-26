@@ -4,4 +4,5 @@ Rails.application.routes.draw do
     registrations: 'users/registrations'
   }
   root "pages#index"
+  get "me/settings", to: 'accounts#edit'
 end
