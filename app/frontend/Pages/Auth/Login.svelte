@@ -1,3 +1,8 @@
+<script context="module">
+  import Layout from "../../components/Layout/AuthLayout.svelte";
+  export const layout = Layout;
+</script>
+
 <script>
   import { useForm, page } from "@inertiajs/inertia-svelte";
   let form = useForm({
@@ -14,7 +19,7 @@
   }
 </script>
 
-<div class="container flex flex-col items-center justify-center h-full">
+<div class="container flex h-full flex-col items-center justify-center">
   <h1 class="mb-[100px] font-serif text-4xl">Sign In</h1>
   <form
     on:submit|preventDefault={submit}
@@ -43,8 +48,8 @@
       <div class="text-red-400">{$form.errors.password}</div>
     {/if}
     <button
-      class="px-2 py-2 text-black bg-green-200 transition-colors hover:bg-green-700 hover:text-white"
-    >Sign In</button
+      class="bg-green-200 px-2 py-2 text-black transition-colors hover:bg-green-700 hover:text-white"
+      >Sign In</button
     >
   </form>
 

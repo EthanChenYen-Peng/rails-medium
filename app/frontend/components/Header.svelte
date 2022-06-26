@@ -11,9 +11,9 @@
     : 'bg-amber-400'}"
 >
   <span>Logo</span>
-  <ul class="flex items-center ml-auto gap-4">
+  <ul class="ml-auto flex items-center gap-4">
     <li>
-      <Link href='/users/sign_in'>Sign In</Link>
+      <Link href="/users/sign_in">Sign In</Link>
     </li>
     <li
       class="rounded-3xl px-4 py-2  text-white transition-colors duration-500  {changeColor

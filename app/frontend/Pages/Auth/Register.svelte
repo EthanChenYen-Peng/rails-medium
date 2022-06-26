@@ -1,3 +1,8 @@
+<script context="module">
+  import Layout from "../../components/Layout/AuthLayout.svelte";
+  export const layout = Layout;
+</script>
+
 <script>
   import { useForm } from "@inertiajs/inertia-svelte";
 

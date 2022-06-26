@@ -1,6 +1,6 @@
-<script context='module'>
-  import Layout from '../components/Layout/PublicLayout.svelte'
-  export const layout = Layout
+<script context="module">
+  import Layout from "../components/Layout/PublicLayout.svelte";
+  export const layout = Layout;
 </script>
 
 <div
@@ -12,7 +12,7 @@
   <h2 class="max-w-[400px] font-serif text-2xl">
     Discover stories, thinking, and expertise from writers on any topic.
   </h2>
-  <button class="px-8 py-2 text-xl text-white bg-black rounded-3xl"
+  <button class="rounded-3xl bg-black px-8 py-2 text-xl text-white"
     >Start Reading</button
   >
 </div>
