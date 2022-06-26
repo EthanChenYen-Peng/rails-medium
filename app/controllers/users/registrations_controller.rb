@@ -7,7 +7,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # GET /resource/sign_up
   def new
     # super
-    render inertia: 'Register'
+    render inertia: 'Auth/Register'
   end
 
   # POST /resource
