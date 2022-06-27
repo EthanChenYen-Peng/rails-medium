@@ -7,37 +7,37 @@
   import TiPencil from "svelte-icons/ti/TiPencil.svelte";
 </script>
 
-<div class="grid h-full grid-cols-12">
+<div class="h-full grid grid-cols-12">
   <aside
     class="col-span-1 flex flex-col items-center border-r-[1px] border-r-gray-300 px-5 py-16"
   >
-    <div class="h-8 w-8">
+    <div class="w-8 h-8">
       <FaMediumM />
     </div>
     <div class="my-16" />
     <div
-      class="flex flex-col items-center gap-10 border-b-2 border-b-gray-300 pb-10"
+      class="flex flex-col items-center pb-10 border-b-2 gap-10 border-b-gray-300"
     >
-      <div class="h-8 w-8">
+      <div class="w-8 h-8">
         <TiHomeOutline />
       </div>
-      <div class="h-8 w-8">
+      <div class="w-8 h-8">
         <FaRegBell />
       </div>
-      <div class="h-8 w-8">
+      <div class="w-8 h-8">
         <FaRegBookmark />
       </div>
-      <div class="h-8 w-8">
+      <div class="w-8 h-8">
         <GoNote />
       </div>
     </div>
 
     <div class="my-6" />
-    <div class="h-8 w-8">
+    <div class="w-8 h-8">
       <TiPencil />
     </div>
   </aside>
-  <div class="col-span-8 px-5 py-16">
+  <div class="px-5 py-16 col-span-8">
     <slot />
   </div>
   <aside class="col-span-3 border-l-[1px] border-l-gray-300 px-5 py-16">

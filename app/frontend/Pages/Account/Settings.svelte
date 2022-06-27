@@ -8,6 +8,7 @@
   import PhotoForm from "../../components/Settings/PhotoForm.svelte";
 
   export let user;
+  export let avatar;
 </script>
 
 <div class="mx-auto max-w-[900px] py-20 px-5 md:w-2/3">
@@ -15,7 +16,7 @@
 
   <div class="my-8 border-b border-gray-200" />
   <div class="flex flex-col gap-10">
-    <UsernameForm user />
-    <PhotoForm user />
+    <UsernameForm {user} />
+    <PhotoForm {user} {avatar} />
   </div>
 </div>

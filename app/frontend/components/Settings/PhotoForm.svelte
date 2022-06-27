@@ -2,7 +2,9 @@
   import { useForm } from "@inertiajs/inertia-svelte";
   import MdAccountCircle from "svelte-icons/md/MdAccountCircle.svelte";
   export let user;
+  export let avatar;
 
+  console.log("user", avatar);
   let editing = false;
   let inputRef;
 
@@ -42,16 +44,33 @@
         on:input={(e) => ($form.avatar = e.target.files[0])}
         disabled
       />
-      <div
-        on:click={() => {
-          inputRef?.click();
-        }}
-        class="h-[120px] w-[120px] {editing
-          ? 'text-gray-500'
-          : 'text-gray-300'}"
-      >
-        <MdAccountCircle />
-      </div>
+      {#if avatar}
+        <div
+          on:click={() => {
+            inputRef?.click();
+          }}
+          class="h-[120px] w-[120px] "
+        >
+          <img
+            src={avatar}
+            class="h-full w-full rounded-full object-cover {editing
+              ? ' brightness-50'
+              : ''}"
+            alt="user avatar"
+          />
+        </div>
+      {:else}
+        <div
+          on:click={() => {
+            inputRef?.click();
+          }}
+          class="h-[120px] w-[120px] {editing
+            ? 'text-gray-500'
+            : 'text-gray-300'}"
+        >
+          <MdAccountCircle />
+        </div>
+      {/if}
       {#if $form.errors.username}
         <div class="text-red-400">{$form.errors.username}</div>
       {/if}
