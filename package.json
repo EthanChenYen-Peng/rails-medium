@@ -20,6 +20,9 @@
     "@inertiajs/inertia": "^0.11.0",
     "@inertiajs/inertia-svelte": "^0.8.0",
     "@inertiajs/progress": "^0.2.7",
-    "svelte-icons": "^2.1.0"
+    "@rails/actiontext": "^6.0.5",
+    "svelte": "^3.48.0",
+    "svelte-icons": "^2.1.0",
+    "trix": "^2.0.0-beta.0"
   }
 }
