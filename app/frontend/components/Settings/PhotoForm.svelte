@@ -4,7 +4,6 @@
   export let user;
   export let avatar;
 
-  console.log("user", avatar);
   let editing = false;
   let inputRef;
 
@@ -70,9 +69,6 @@
         >
           <MdAccountCircle />
         </div>
-      {/if}
-      {#if $form.errors.username}
-        <div class="text-red-400">{$form.errors.username}</div>
       {/if}
     </form>
   </div>

@@ -12,9 +12,11 @@
   export let avatar;
 
   let contentRef;
+  let imageInputRef;
   let form = useForm({
     title: null,
     content: null,
+    cover_image: null,
   });
 
   function submit() {
@@ -24,6 +26,10 @@
       }))
       .post("/posts");
   }
+
+  $: coverImage = $form.cover_image
+    ? URL.createObjectURL($form.cover_image)
+    : "https://images.unsplash.com/photo-1656355691752-a576cbf30ac5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3001&q=80";
 </script>
 
 <nav class="flex justify-between px-10 py-5">
@@ -47,12 +53,26 @@
 </nav>
 <div class="mx-auto w-10/12 py-16 md:w-8/12">
   <form on:submit|preventDefault={submit}>
-    <div class="flex justify-end">
+    <div class="my-5 flex justify-end">
       <button
         class="rounded-2xl bg-green-600 py-4 px-5 text-white"
         type="submit">Publish</button
       >
     </div>
+    <input
+      type="file"
+      class="hidden"
+      bind:this={imageInputRef}
+      on:input={(e) => ($form.cover_image = e.target.files[0])}
+    />
+    <div class="px-4" on:click={() => imageInputRef.click()}>
+      <img
+        src={coverImage}
+        alt=""
+        class="max-h-[400px] w-full object-cover transition-opacity hover:opacity-80"
+      />
+    </div>
+
     <input
       type="text"
       placeholder="Title"
