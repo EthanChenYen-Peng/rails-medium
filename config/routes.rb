@@ -6,5 +6,5 @@ Rails.application.routes.draw do
   root "pages#index"
   get "me/settings", to: 'accounts#edit', as: 'own_settings'
   put "me/settings", to: 'accounts#update'
-  resources :posts, only: [:new]
+  resources :posts, only: [:new, :create]
 end
