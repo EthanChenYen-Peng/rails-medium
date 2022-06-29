@@ -1,8 +1,6 @@
 import axios from "axios";
 import "./index.css";
 import Layout from "../components/Layout/DashboardLayout.svelte";
-import "trix"
-import "@rails/actiontext"
 import { createInertiaApp } from "@inertiajs/inertia-svelte";
 import { InertiaProgress } from "@inertiajs/progress";
 
